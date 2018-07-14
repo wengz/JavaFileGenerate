@@ -1,0 +1,29 @@
+apply plugin: 'java-library'
+apply plugin: 'maven'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation gradleApi()
+    implementation 'com.android.tools.build:gradle:3.1.0'
+    implementation 'commons-io:commons-io:2.4'
+    implementation 'com.squareup:javapoet:1.7.0'
+    implementation 'com.github.javaparser:javaparser-symbol-solver-core:3.6.13'
+    implementation 'pers.wengzc:annotation:0.0.1'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+group = 'com.example.testannotationplugin'
+version = '0.0.1'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('D:/local_repo'))
+        }
+    }
+}
